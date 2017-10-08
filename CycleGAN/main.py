@@ -17,8 +17,9 @@ def convert_to_cuda_var(x):
     x = x.cuda()
   return x
 
-# load images A into memory
-# load images B into memory
+# TODO load images from X into memory
+# TODO load images from Y into memory
+# TODO remember to shuffle data
 model = Model()
 image_buffer = [] # stores the last 50 generated images
 
@@ -30,7 +31,7 @@ first = convert_to_cuda_var(first)
 
 
 for i in range(NUM_ITER):
-#  if epoch > 100: # start decaying lr
+#  if epoch > 100: # start decaying lr TODO 
 
   model.train(first, 0)
   model.train(zero, 1)
