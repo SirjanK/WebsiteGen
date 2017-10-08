@@ -28,11 +28,8 @@ class Discriminator(nn.Module):
 
 
 # Sanity Testing discriminator
-d = Discriminator()
-a = np.zeros((1, 3, 128, 128)).astype(np.float32)
-temp = torch.from_numpy(a)
-print(d(Variable(temp)))
 
+d = Discriminator()
 # picture = Image.open("random_sites/15000.png")
 picture = Image.open("../random_sites/13.png").resize((128, 128))
 data = np.asarray(picture, dtype=np.float32)
