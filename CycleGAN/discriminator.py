@@ -4,8 +4,9 @@ import torch.nn as nn
 from PIL import Image
 from torch.autograd import Variable
 
-
 LAST_LAYER_INPUT = 512*6*6
+
+
 class Discriminator(nn.Module):
   def __init__(self):
     super(Discriminator, self).__init__()

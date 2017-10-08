@@ -1,8 +1,8 @@
 import torch
 import torch.optim as optim
 import torch.nn as nn
-from CycleGAN.discriminator import Discriminator
-from CycleGAN.generator import Generator
+from discriminator import Discriminator
+from generator import Generator
 #from tensorboardX import SummaryWriter
 #writer = SummaryWriter()
 
