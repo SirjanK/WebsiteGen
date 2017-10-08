@@ -14,6 +14,7 @@ class Discriminator(nn.Module):
     self.layer3 = nn.Sequential(nn.Conv2d(128, 256, 4, 2), nn.InstanceNorm2d(256), nn.LeakyReLU())
     self.layer4 = nn.Sequential(nn.Conv2d(256, 512, 4, 2), nn.InstanceNorm2d(512), nn.LeakyReLU())
     self.layer5 = nn.Linear(LAST_LAYER_INPUT, 1)
+    self.layer6 = nn.Sigmoid()
 
   def forward(self, pictures):
     first = self.layer1(pictures)
@@ -21,23 +22,21 @@ class Discriminator(nn.Module):
     third = self.layer3(second)
     fourth = self.layer4(third)
     temp = fourth.view(-1, LAST_LAYER_INPUT)
-    ret = self.layer5(temp)
-    # TODO maybe a tanh or sigmoid to put the range in a place we want 
+    linear_output = self.layer5(temp)
+    ret = self.layer6(linear_output)
     return ret
 
 
-'''
 # Sanity Testing discriminator
 d = Discriminator()
 a = np.zeros((1, 3, 128, 128)).astype(np.float32)
 temp = torch.from_numpy(a)
 print(d(Variable(temp)))
 
-picture = Image.open("random_sites/15000.png")
-data = np.asarray(picture)
+# picture = Image.open("random_sites/15000.png")
+picture = Image.open("../random_sites/13.png").resize((128, 128))
+data = np.asarray(picture, dtype=np.float32)
+data = np.transpose(data, [2, 0, 1])
 temp = torch.from_numpy(np.array([data]))
 print(temp.size())
 print(d.forward(Variable(temp)))
-'''
-
-
