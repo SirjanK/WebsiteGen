@@ -3,3 +3,5 @@ random_sites/
 random_sites_mobile/
 WebsiteStyleTransfer.pem
 .idea/
+.DS_Store
+CycleGAN/__pycache__/

@@ -28,7 +28,7 @@ class Model:
         self.g_X.cuda()
         self.g_Y.cuda()
     if RESUME:
-      # TODO Write this
+      # TODO Write this. Load previous model weights in 
       checkpoint = torch.load('checkpoint.tar')
       self.net.load_state_dict(checkpoint['state_dict'])
       self.optimizer.load_state_dict(checkpoint['optimizer'])
@@ -59,6 +59,8 @@ class Model:
 
   def calculate_loss(self, images, label, images_mapped):
     # adversarial loss and cycle consistency loss
+    # TODO This recalls the generator rather than use images_mapped, which is the output of evaluate
+    # Thus, this is TWO forward passes. just fyi 
     if label == 0:
       adv_loss = self.d_Y(self.g_X(images)).norm(dim=1)
       cycle_loss = self.L1Loss(self.g_Y(self.g_X(images)), images)
