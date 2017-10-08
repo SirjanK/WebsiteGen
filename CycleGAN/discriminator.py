@@ -1,6 +1,7 @@
 import torch
 import numpy as np
 import torch.nn as nn
+from PIL import Image
 from torch.autograd import Variable
 
 
@@ -25,7 +26,14 @@ class Discriminator(nn.Module):
 
 
 d = Discriminator()
-a = np.zeros((1, 3, 84, 84)).astype(np.float32)
-temp = torch.from_numpy(a)
-
+'''
+picture = Image.open("random_sites/15000.png")
+data = np.asarray(picture)
+temp = torch.from_numpy(np.array([data]))
+print(temp.size())
 print(d.forward(Variable(temp)))
+'''
+
+#a = np.zeros((1, 3, 84, 84)).astype(np.float32)
+#temp = torch.from_numpy(a)
+#print(d.forward(Variable(temp)))
