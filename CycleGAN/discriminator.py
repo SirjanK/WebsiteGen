@@ -22,6 +22,7 @@ class Discriminator(nn.Module):
     fourth = self.layer4(third)
     temp = fourth.view(-1, LAST_LAYER_INPUT)
     ret = self.layer5(temp)
+    # TODO maybe a tanh or sigmoid to put the range in a place we want 
     return ret
 
 
@@ -31,4 +32,5 @@ d = Discriminator()
 a = np.zeros((1, 3, 128, 128)).astype(np.float32)
 temp = torch.from_numpy(a)
 print(d(Variable(temp)))
+
 

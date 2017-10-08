@@ -1,6 +1,7 @@
 .ipynb_checkpoints/
 random_sites/
 random_sites_mobile/
-.DS_Store
+WebsiteStyleTransfer.pem
 .idea/
+.DS_Store
 CycleGAN/__pycache__/
